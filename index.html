@@ -6,14 +6,16 @@
   <title>Happy Rakhi Dii ❤️</title>
   <style>
     body {
-      margin: 0; padding: 0;
+      margin: 0; 
+      padding: 0;
       font-family: 'Segoe UI', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: white;
+      background: linear-gradient(135deg, #f8d5cc, #fce7e1);
       position: relative;
+      overflow: hidden;
     }
 
     #tap {
@@ -36,7 +38,7 @@
       max-width: 600px;
       line-height: 1.6;
       text-align: center;
-      background-color: rgba(255,255,255,0.9);
+      background-color: rgba(255,255,255,0.95);
       padding: 20px;
       border-radius: 15px;
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
@@ -54,6 +56,15 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
       z-index: 1;
+    }
+
+    /* Hidden YouTube iframe */
+    #bgm {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border: 0;
+      z-index: -1;
     }
   </style>
 </head>
@@ -77,14 +88,22 @@
   alt="Rakhi Image"
 />
 
+<!-- Hidden YouTube Player -->
+<iframe 
+  id="bgm" 
+  src="" 
+  allow="autoplay"
+></iframe>
+
 <script>
   function showMessage() {
     document.getElementById("tap").style.display = "none";
     document.getElementById("message").style.display = "block";
     document.getElementById("small-image").style.display = "block";
+    // Start music from 2 seconds, autoplay and loop
+    document.getElementById("bgm").src = "https://www.youtube.com/embed/4RBIwnM0ulk?start=2&autoplay=1&loop=1&playlist=4RBIwnM0ulk";
   }
 </script>
 
 </body>
 </html>
-
