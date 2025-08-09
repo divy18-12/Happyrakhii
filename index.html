@@ -5,48 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Happy Rakhi Dii ❤️</title>
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background-color: black; /* Prevent white flash */
-      font-family: 'Segoe UI', sans-serif;
-      overflow: hidden;
-    }
-
-    /* Background image layer with fade-in */
-    #background-image {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: url('https://i.postimg.cc/rpPjgQGx/Whats-App-Image-2025-08-08-at-11-06-53-PM.jpg') no-repeat center center fixed;
-      background-size: cover;
-      z-index: -1;
-      opacity: 0;
-      animation: fadeInBg 1.5s forwards;
-    }
-
-    @keyframes fadeInBg {
-      to { opacity: 1; }
-    }
-
-    /* Hide tap and message initially */
-    #tap, #message {
-      visibility: hidden;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      z-index: 2;
-    }
-
-    /* Visible class to show tap and message */
-    #tap.visible, #message.visible {
-      visibility: visible;
-      opacity: 1;
-    }
-
     body {
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: white;
+      position: relative;
     }
 
     #tap {
@@ -57,19 +24,15 @@
       box-shadow: 0 0 20px rgba(0,0,0,0.2);
       cursor: pointer;
       transition: transform 0.3s ease;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       font-size: 1.3rem;
+      z-index: 2;
     }
-
     #tap:hover {
       transform: scale(1.05);
     }
 
     #message {
-      font-size: 1.1rem;
+      display: none;
       max-width: 600px;
       line-height: 1.6;
       text-align: center;
@@ -77,27 +40,24 @@
       padding: 20px;
       border-radius: 15px;
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      margin: auto;
-      max-width: 90vw;
+      z-index: 2;
+      position: relative;
     }
 
-    /* Hidden YouTube iframe */
-    #bgm {
-      position: absolute;
-      width: 0;
-      height: 0;
-      border: 0;
-      z-index: -1;
+    #small-image {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 120px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      z-index: 1;
     }
   </style>
 </head>
 <body>
-
-<!-- Background image div -->
-<div id="background-image"></div>
-
-<!-- Hidden YouTube Player -->
-<iframe id="bgm" src="" allow="autoplay"></iframe>
 
 <div id="tap" onclick="showMessage()">
   🎁 Tap to open your Rakhi message, Jyoti Dii 💖
@@ -106,32 +66,25 @@
 <div id="message">
   <p><strong>Happy Raksha Bandhan to the sweetest, most supportive, kind, and beautiful sister.</strong><br><br>
   You are not just my sister — you are a part of my soul, my safe place, and my greatest blessing. I can’t even imagine my life without you, especially in this phase where your love and support mean the world to me.<br><br>
-  You have stood by me in ways words can’t describe, helped me more than I could ever imagine, and filled my life with laughter, comfort, and strength. Every call, every talk, every moment I spent this year with you was my greatest feeling ever. Thankkkk youuu for being exactly who you are — pure, genuine, and irreplaceable.<br><br>
-  I pray that your life is always filled with happiness, good health, and all your dreams come true. You are my forever best friend, my protector, and my pride.<br><br>
+  You have stood by me in ways words can’t describe, helped me more than I could ever imagine, and filled my life with laughter, comfort, and strength.<br><br>
   <strong>I’m blessed to have you in my lifeeee. Once again, Happy Rakhi, Diiii 🥰💞❤️</strong>
   </p>
 </div>
 
+<img
+  id="small-image"
+  src="https://i.postimg.cc/rpPjgQGx/Whats-App-Image-2025-08-08-at-11-06-53-PM.jpg"
+  alt="Rakhi Image"
+/>
+
 <script>
-  // Wait for background image to load before showing content
-  const bgImageDiv = document.getElementById('background-image');
-  const tap = document.getElementById('tap');
-  const message = document.getElementById('message');
-
-  // Preload background image
-  const img = new Image();
-  img.src = 'https://i.postimg.cc/rpPjgQGx/Whats-App-Image-2025-08-08-at-11-06-53-PM.jpg';
-  img.onload = () => {
-    // Show tap button after background image loads
-    tap.classList.add('visible');
-  };
-
   function showMessage() {
-    tap.style.display = 'none';
-    message.classList.add('visible');
-    document.getElementById("bgm").src = "https://www.youtube.com/embed/4RBIwnM0ulk?start=2&autoplay=1&loop=1&playlist=4RBIwnM0ulk";
+    document.getElementById("tap").style.display = "none";
+    document.getElementById("message").style.display = "block";
+    document.getElementById("small-image").style.display = "block";
   }
 </script>
 
 </body>
 </html>
+
