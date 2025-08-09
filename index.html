@@ -5,13 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Happy Rakhi Dii ❤️</title>
   <style>
-    /* Background image layer */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: black; /* Prevent white flash */
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    /* Background image layer with fade-in */
     #background-image {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
       background: url('https://i.postimg.cc/rpPjgQGx/Whats-App-Image-2025-08-08-at-11-06-53-PM.jpg') no-repeat center center fixed;
       background-size: cover;
       z-index: -1;
+      opacity: 0;
+      animation: fadeInBg 1.5s forwards;
+    }
+
+    @keyframes fadeInBg {
+      to { opacity: 1; }
+    }
+
+    /* Hide tap and message initially */
+    #tap, #message {
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      z-index: 2;
+    }
+
+    /* Visible class to show tap and message */
+    #tap.visible, #message.visible {
+      visibility: visible;
+      opacity: 1;
     }
 
     body {
@@ -28,7 +57,6 @@
       box-shadow: 0 0 20px rgba(0,0,0,0.2);
       cursor: pointer;
       transition: transform 0.3s ease;
-      z-index: 2;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -41,7 +69,6 @@
     }
 
     #message {
-      display: none;
       font-size: 1.1rem;
       max-width: 600px;
       line-height: 1.6;
@@ -50,7 +77,6 @@
       padding: 20px;
       border-radius: 15px;
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      z-index: 2;
       margin: auto;
       max-width: 90vw;
     }
@@ -87,9 +113,22 @@
 </div>
 
 <script>
+  // Wait for background image to load before showing content
+  const bgImageDiv = document.getElementById('background-image');
+  const tap = document.getElementById('tap');
+  const message = document.getElementById('message');
+
+  // Preload background image
+  const img = new Image();
+  img.src = 'https://i.postimg.cc/rpPjgQGx/Whats-App-Image-2025-08-08-at-11-06-53-PM.jpg';
+  img.onload = () => {
+    // Show tap button after background image loads
+    tap.classList.add('visible');
+  };
+
   function showMessage() {
-    document.getElementById("tap").style.display = "none";
-    document.getElementById("message").style.display = "block";
+    tap.style.display = 'none';
+    message.classList.add('visible');
     document.getElementById("bgm").src = "https://www.youtube.com/embed/4RBIwnM0ulk?start=2&autoplay=1&loop=1&playlist=4RBIwnM0ulk";
   }
 </script>
